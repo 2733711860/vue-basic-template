@@ -109,7 +109,7 @@ export function get(url,params={}){
  
   export function postFormData(url,data = {}){
     return new Promise((resolve,reject) => {
-			config.headers.post['Content-Type'] = 'multipart/form-data';
+			// config.headers['Content-Type'] = 'multipart/form-data';
       axios.post(url, data, config)
        .then(response => {
          resolve(response.data);
