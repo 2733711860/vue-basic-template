@@ -22,7 +22,9 @@ import {
   Search,
   Tag,
   Lazyload,
-	Uploader
+	Uploader,
+	Form,
+	Picker
 } from "vant";
 
 Vue.use(Icon);
@@ -48,3 +50,5 @@ Vue.use(Search);
 Vue.use(Tag);
 Vue.use(Lazyload);
 Vue.use(Uploader);
+Vue.use(Form);
+Vue.use(Picker);
