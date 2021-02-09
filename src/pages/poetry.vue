@@ -35,13 +35,13 @@ export default {
 	
 	mounted() {
 		this.getPoetryTypes();
-		this.getPoetry('唐诗三百首');
 	},
 	
 	methods: {
 		getPoetryTypes() { // 获取诗词类型
 			getPoetryType().then(res => {
 				this.types = res.data.list;
+				this.getPoetry(this.types[0].type);
 				this.initSwiper();
 			})
 		},
