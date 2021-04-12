@@ -24,8 +24,8 @@ export const getSevenWeather = params => get(`${baseUrl1}/get/sevenday/weather`,
 
 export const getOpenOneGood = params => get(`${baseUrl1}/all/item?apiCode=6`, params) // 随机返回一句鸡汤正能量
 
-export const getPoetryBytype = params => get(`${baseUrl}/get/poetry/bytype`, params) // 根据朝代或者作者获取诗词
+export const getPoetryBytype = params => get(`${baseUrl1}/get/poetry/bytype`, params) // 根据朝代或者作者获取诗词
 
-export const getSearchPoetry = params => get(`${baseUrl}/get/poetry`, params) // 搜索诗词
+export const getSearchPoetry = params => get(`${baseUrl1}/get/poetry`, params) // 搜索诗词
 
-export const getPoetryType = params => get(`${baseUrl}/get/poetry/type`, params) // 诗词类型
+export const getPoetryType = params => get(`${baseUrl1}/get/poetry/type`, params) // 诗词类型

@@ -12,6 +12,9 @@ export default {
 		}
 	},
 	
+	mounted() {
+	},
+	
 	methods: {
 		afterRead(file) {
 			// 此时可以自行将文件上传至服务器

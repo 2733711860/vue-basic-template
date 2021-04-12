@@ -3,25 +3,10 @@
 		<div class="content bounceinT" :style="{ backgroundImage: picUrl }">
 			<div class="card-content">
 				<div class="cart-div">
-					<div class="top">
-						<div class="left">
-							<div>{{windObj ? windObj.week : '星期一'}}</div>
-							<div>{{windObj ? windObj.tem : '10'}}℃</div>
-						</div>
-						<div class="right">
-							<i class="iconfont" :class="['icon-' + windObj.wea_img]" v-if="windObj"></i>
-							<div>{{windObj ? windObj.wea : '晴'}}</div>
-						</div>
-					</div>
-					
-					<div class="middle">
-						<div>{{tipsDetail ? tipsDetail.desc : ''}}</div>
-						<div>{{windObj ? windObj.air_tips : ''}}</div>
-					</div>
-					
-					<div class="bottom">某某天气</div>
+					<div class="title">{{poetryObj ? poetryObj.name : ''}}</div>
+					<div class="author">{{poetryObj ? poetryObj.author : ''}}</div>
+					<div class="poetry-content">{{poetryObj ? poetryObj.content : ''}}</div>
 				</div>
-				
 				<div class="nei-overlay"></div>
 			</div>
 			
@@ -45,25 +30,9 @@ export default {
 	
 	props: {
 		value: {},
-		windObj: {
+		poetryObj: {
 			type: [String, Object],
 			default: ''
-		},
-		tipsDetail: {
-			type: [String, Object],
-			default: ''
-		}
-	},
-	
-	watch: {
-		value() {
-			this.show = this.value;
-			if (this.value) {
-				this.picIndex = randomNum(1, 30)
-			}
-		},
-		show() {
-			this.$emit('input', this.show)
 		}
 	},
 	
@@ -73,7 +42,19 @@ export default {
 				`${sysConfig.qiniuPicUrl}/mwd-picture-${this.picIndex}.jpg` :
 				require(`@/assets/img/weather/bg.jpg`);
 			return `url(${bgUrl})`
+		}
+	},
+	
+	watch: {
+		value() {
+			this.show = this.value;
+			if (this.value) {
+				this.picIndex = randomNum(1, 60)
+			}
 		},
+		show() {
+			this.$emit('input', this.show)
+		}
 	},
 	
 	methods: {
@@ -102,7 +83,7 @@ export default {
 			background-repeat: no-repeat;
 			background-size: cover;
 			// background-size: 100% 100%;
-			z-index: 110;
+			z-index: 210;
 			
 			.card-content{
 				font-family: cursive;
@@ -114,48 +95,24 @@ export default {
 					width: 100%;
 					height: 100%;
 					position: absolute;
-					z-index: 111;
+					z-index: 211;
 					display: flex;
 					flex-direction: column;
-					justify-content: space-between;
-					.top{
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-						.left{
-							div:first-child{
-								font-size: 20px;
-								line-height: 30px;
-							}
-							div:last-child{
-								font-size: 40px;
-								line-height: 70px;
-							}
-						}
-						.right{
-							display: flex;
-							flex-direction: column;
-							align-items: center;
-							.iconfont{
-								font-size: 35px;
-								margin-bottom: 10px;
-							}
-						}
-					}
-					.middle{
-						font-size: 17px;
-						div{
-							line-height: 25px;
-						}
-						div:first-child{
-							margin-bottom: 20px;
-						}
-						div:last-child{
-							// margin-top: 40px;
-						}
-					}
-					.bottom{
+					overflow-y: auto;
+					font-size: 16px;
+					.title{
+						font-size: 20px;
+						line-height: 40px;
 						text-align: center;
+					}
+					.author{
+						line-height: 30px;
+						text-align: center;
+					}
+					.poetry-content{
+						line-height: 30px;
+						margin-top: 20px;
+						padding: 0 5px;
 					}
 				}
 				.nei-overlay{
@@ -164,7 +121,7 @@ export default {
 					left: 0;
 					right: 0;
 					bottom: 0;
-					background-color: rgba(0, 0, 0, .2);
+					background-color: rgba(255, 255, 255, .4);
 				}
 			}
 			
@@ -184,8 +141,8 @@ export default {
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background-color: rgba(0, 0, 0, .6);
-			z-index: 100;
+			background-color: rgba(0, 0, 0, .5);
+			z-index: 200;
 		}
 	}
 	
